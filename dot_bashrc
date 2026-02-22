@@ -136,3 +136,64 @@ export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 eval "$(oh-my-posh init bash --config ~/.config/ohmyposh/mytheme.json)"
 export PATH="$HOME/.cargo/bin:$PATH"
 alias mm='ls -l'
+# ===== Git Shortcuts =====
+
+# Status
+alias gs='git status -sb'
+
+# Add everything
+alias ga='git add .'
+
+# Add interactively (very useful)
+alias gap='git add -p'
+
+# Commit
+alias gc='git commit'
+alias gcm='git commit -m'
+
+# Amend last commit
+alias gca='git commit --amend'
+
+# Log (beautiful graph view)
+alias gl='git log --oneline --graph --decorate --all'
+
+# Show last commit
+alias glast='git log -1 HEAD'
+
+# Diff
+alias gd='git diff'
+alias gds='git diff --staged'
+
+# Branches
+alias gb='git branch'
+alias gba='git branch -a'
+
+# Switch branch (modern way)
+alias gsw='git switch'
+alias gco='git checkout'
+
+# Create and switch branch
+alias gnew='git switch -c'
+
+# Pull / Push
+alias gp='git pull'
+alias gpf='git push --force-with-lease'
+alias gpu='git push -u origin HEAD'
+
+# Fetch
+alias gf='git fetch --all --prune'
+
+# Reset (careful)
+alias grh='git reset --hard'
+alias grs='git reset --soft HEAD~1'
+
+# Stash
+alias gst='git stash'
+alias gstp='git stash pop'
+alias gstl='git stash list'
+
+# Undo last commit but keep changes
+alias guncommit='git reset --soft HEAD~1'
+
+# Remove file from git but keep locally
+alias guntrack='git rm --cached'
