@@ -118,14 +118,14 @@ fi
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/sicksociety/miniconda3/bin/conda' 'shell.bash' 'hook' 2>/dev/null)"
+__conda_setup="$('/opt/miniconda3/bin/conda' 'shell.bash' 'hook' 2>/dev/null)"
 if [ $? -eq 0 ]; then
   eval "$__conda_setup"
 else
-  if [ -f "/home/sicksociety/miniconda3/etc/profile.d/conda.sh" ]; then
-    . "/home/sicksociety/miniconda3/etc/profile.d/conda.sh"
+  if [ -f "/opt/miniconda3/etc/profile.d/conda.sh" ]; then
+    . "/opt/miniconda3/etc/profile.d/conda.sh"
   else
-    export PATH="/home/sicksociety/miniconda3/bin:$PATH"
+    export PATH="/opt/miniconda3/bin:$PATH"
   fi
 fi
 unset __conda_setup
@@ -197,3 +197,39 @@ alias guncommit='git reset --soft HEAD~1'
 
 # Remove file from git but keep locally
 alias guntrack='git rm --cached'
+eval "$(fzf --bash)"
+
+# Forensics Tools Aliases
+alias vol3='eval "$(/opt/miniconda3/bin/conda shell.bash hook)" && conda activate vol3 && vol'
+alias vol2='eval "$(/opt/miniconda3/bin/conda shell.bash hook)" && conda activate vol2 && python /tools/volatility2/vol.py'
+alias chainsaw='/tools/chainsaw/chainsaw'
+
+# Helper to deactivate conda after vol usage
+alias vol-exit='conda deactivate'
+
+# Didier Stevens PDF Tools
+alias pdf-parser='python3 /tools/DidierStevensSuite/pdf-parser.py'
+alias pdfid='python3 /tools/DidierStevensSuite/pdfid.py'
+alias make-pdf-javascript='python3 /tools/DidierStevensSuite/make-pdf-javascript.py'
+alias make-pdf-embedded='python3 /tools/DidierStevensSuite/make-pdf-embedded.py'
+alias pdftool='python3 /tools/DidierStevensSuite/pdftool.py'
+
+# Other useful Didier Stevens tools
+alias base64dump='python3 /tools/DidierStevensSuite/base64dump.py'
+alias zipdump='python3 /tools/DidierStevensSuite/zipdump.py'
+alias oledump='python3 /tools/DidierStevensSuite/oledump.py'
+alias rtfdump='python3 /tools/DidierStevensSuite/rtfdump.py'
+alias xmldump='python3 /tools/DidierStevensSuite/xmldump.py'
+alias emldump='python3 /tools/DidierStevensSuite/emldump.py'
+alias msodde='python3 /tools/DidierStevensSuite/msodde.py'
+alias numbers-to-string='python3 /tools/DidierStevensSuite/numbers-to-string.py'
+alias xor-kpa='python3 /tools/DidierStevensSuite/xor-kpa.py'
+alias translate='python3 /tools/DidierStevensSuite/translate.py'
+# Auto-start tmux (but avoid nesting and non-interactive edge cases)
+if command -v tmux &>/dev/null &&
+  [ -n "$PS1" ] &&
+  [[ ! "$TERM" =~ screen ]] &&
+  [[ ! "$TERM" =~ tmux ]] &&
+  [ -z "$TMUX" ]; then
+  exec tmux new-session -A -s main
+fi
