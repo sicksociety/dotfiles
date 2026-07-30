@@ -132,7 +132,6 @@ unset __conda_setup
 # <<< conda initialize <<<
 export PATH="$HOME/.local/bin:$PATH"
 alias vol2="python2 /tools/volatility/vol.py"
-export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 eval "$(oh-my-posh init bash --config ~/.config/ohmyposh/mytheme.json)"
 export PATH="$HOME/.cargo/bin:$PATH"
 alias mm='ls -l'
