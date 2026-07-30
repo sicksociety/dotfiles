@@ -233,3 +233,4 @@ if command -v tmux &>/dev/null &&
   [ -z "$TMUX" ]; then
   exec tmux new-session -A -s main
 fi
+alias update='sudo apt update && sudo apt upgrade -y'
