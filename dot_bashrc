@@ -233,3 +233,11 @@ if command -v tmux &>/dev/null &&
   exec tmux new-session -A -s main
 fi
 alias update='sudo apt update && sudo apt upgrade -y'
+# Enable kubectl autocompletion
+source <(kubectl completion bash)
+
+# Setup short alias 'k'
+alias k=kubectl
+
+# Extend autocompletion to the 'k' alias
+complete -o default -F __start_kubectl k
