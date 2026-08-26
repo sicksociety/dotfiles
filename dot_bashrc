@@ -241,3 +241,5 @@ alias k=kubectl
 
 # Extend autocompletion to the 'k' alias
 complete -o default -F __start_kubectl k
+alias vi='nvim'
+alias vim='nvim'
